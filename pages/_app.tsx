@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 import Head from 'next/head';
@@ -11,6 +11,7 @@ function App({ Component, pageProps }: AppProps) {
 			<meta name="viewport" content="width=device-width" />
 			<title>{pageProps?.head?.title || "Document"}</title>
 			<meta name="description" content={pageProps?.head?.description || "A page"} />
+			<link rel="icon" href="/favicon.svg" />
 		</Head>
 		<ConnectionCheck />
 		<ColorMode initMode="dark">
