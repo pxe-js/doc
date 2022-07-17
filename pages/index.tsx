@@ -7,11 +7,11 @@ import arrow from "../assets/arrow.svg";
 
 const Home: NextPage = () => {
 	return <Stack {...contentInCenter} className={styles.wrapper} direction="column">
-		<Stack {...contentInCenter}>
-			<Heading color={color}>PXE.js</Heading>
+		<Stack {...contentInCenter} className={styles.texts}>
+			<Heading color={color}>PXE</Heading>
 			<Text fontWeight={200}>A web framework for Node.js</Text>
 		</Stack>
-		<Flex style={{ marginTop: 20 }}>
+		<Flex className={styles.buttons}>
 			<Button colorScheme={colorScheme}>Get Started</Button>
 			<Button colorScheme={colorScheme} variant="ghost" className={styles.goToDocs}>
 				<Text>Go to Docs</Text>
