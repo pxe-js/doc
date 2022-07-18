@@ -5,21 +5,22 @@ import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import arrow from "../assets/arrow.svg";
 import Navbar from '../components/Navbar';
+import Background from '../components/Background';
 
 const Home: NextPage = () => {
 	return <>
 		<Navbar />
 		<Stack {...contentInCenter} className={styles.wrapper}>
-			<Flex className={styles.background}></Flex>
+			<Background props={{ image: "/background.jpg" }} />
 			<Stack {...contentInCenter} className={styles.texts}>
 				<Heading color={color}>PXE</Heading>
 				<Text>A web framework for Node.js</Text>
 			</Stack>
 			<Flex className={styles.buttons}>
-				<Link href="/begin">
+				<Link href="/examples/hello-world">
 					<Button colorScheme={colorScheme} size="lg">Get Started</Button>
 				</Link>
-				<Link href="/docs">
+				<Link href="/docs/installation">
 					<Button 
 						colorScheme={colorScheme} 
 						size="lg" 
