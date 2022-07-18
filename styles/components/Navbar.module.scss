@@ -4,12 +4,16 @@
     height: 55px;
     justify-content: space-between;
     padding: 10px 0px 10px 10px;
+
+    h2 {
+        font-size: 24px;
+    }
     
     .links {
         p {
             font-weight: 200;
             user-select: none;
-            font-size: 0.875rem;
+            font-size: 0.92rem;
             margin: 0px 10px;
         }
     }
