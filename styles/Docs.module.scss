@@ -302,3 +302,10 @@
         font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 }
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    align-items: space-between;
+}

@@ -11,7 +11,7 @@ const Home: NextPage = () => {
 	return <>
 		<Navbar />
 		<Stack {...contentInCenter} className={styles.wrapper}>
-			<Background props={{ image: "/background.jpg" }} />
+			<Background />
 			<Stack {...contentInCenter} className={styles.texts}>
 				<Heading color={color}>PXE</Heading>
 				<Text>A web framework for Node.js</Text>

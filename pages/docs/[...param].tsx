@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import styles from "../../styles/Docs.module.scss";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Background from "../../components/Background";
+import { Box, Stack } from "@chakra-ui/react";
 
 const Page: NextPage = () => {
     const { param } = useRouter().query;
@@ -30,31 +31,33 @@ const Page: NextPage = () => {
         ? <Error statusCode={content} />
         : <>
             <Navbar />
-            <Background props={{ color: "rgb(30, 30, 30)" }} />
-            <ReactMarkdown
-                className={styles.markdown}
-                remarkPlugins={[remarkGfm]}
-                components={{
-                    code({ node, inline, className, children, ...props }) {
-                        const match = /language-(\w+)/.exec(className || '')
-                        return !inline && match
-                            ? <Prism
-                                // @ts-ignore
-                                style={vscDarkPlus}
-                                language={match[1]}
-                                PreTag="div"
-                                {...props}
-                            >
-                                {String(children).replace(/\n$/, '')}
-                            </Prism>
-                            : <code className={className} {...props}>
-                                {children}
-                            </code>;
-                    }
-                }}
-            >
-                {content}
-            </ReactMarkdown>
+            <Background noDefault={true} />
+            <Stack className={styles.wrapper}>
+                <ReactMarkdown
+                    className={styles.markdown}
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                        code({ node, inline, className, children, ...props }) {
+                            const match = /language-(\w+)/.exec(className || '')
+                            return !inline && match
+                                ? <Prism
+                                    // @ts-ignore
+                                    style={vscDarkPlus}
+                                    language={match[1]}
+                                    PreTag="div"
+                                    {...props}
+                                >
+                                    {String(children).replace(/\n$/, '')}
+                                </Prism>
+                                : <code className={className} {...props}>
+                                    {children}
+                                </code>;
+                        }
+                    }}
+                >
+                    {content}
+                </ReactMarkdown>
+            </Stack>
         </>;
 }
 

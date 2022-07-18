@@ -1,4 +1,4 @@
-# Installation
+## Installation
 
 Installation using NPM or Yarn
 ```bash
