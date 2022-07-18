@@ -5,34 +5,24 @@
     >* {
         margin: 8px;
     }
-}
 
-.goToDocs {
-    display: flex;
-    justify-content: space-around;
-
-    >*:nth-child(1) {
-        margin-right: 10px;
-        margin-left: 5px;
+    .goToDocs {
+        display: flex;
+        justify-content: space-around;
+    
+        >*:nth-child(1) {
+            margin-right: 10px;
+            margin-left: 5px;
+        }
     }
-}
-
-.buttons {
-    margin-top: 15px !important;
-}
-
-.texts {
-    > * {
-        margin: 2px !important;
+    
+    .buttons {
+        margin-top: 15px !important;
     }
-
-    h2 {
-        font-weight: 800;
+    
+    .texts {
+        > * {
+            margin: 2px !important;
+        }
     }
-}
-
-.navbar {
-    position: absolute;
-    width: 100%;
-    height: 55px;
 }
