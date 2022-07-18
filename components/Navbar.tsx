@@ -5,7 +5,7 @@ import { color } from "../utils/constants";
 function Navbar() {
     return <Stack direction="row" className={styles.navbar}>
         <Link href="/">
-            <Heading color={color} fontWeight={800}>PXE</Heading>
+            <Heading color={color}>PXE</Heading>
         </Link>
         <Stack direction="row" className={styles.links}>
             <Link href="/docs">

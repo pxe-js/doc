@@ -12,8 +12,8 @@ const Home: NextPage = () => {
 		<Stack {...contentInCenter} className={styles.wrapper}>
 			<Flex className={styles.background}></Flex>
 			<Stack {...contentInCenter} className={styles.texts}>
-				<Heading color={color} fontWeight={800} fontSize="50px">PXE</Heading>
-				<Text fontWeight={100} fontSize="20px">A web framework for Node.js</Text>
+				<Heading color={color}>PXE</Heading>
+				<Text>A web framework for Node.js</Text>
 			</Stack>
 			<Flex className={styles.buttons}>
 				<Link href="/begin">
