@@ -8,11 +8,8 @@ function Navbar() {
             <Heading color={color}>PXE</Heading>
         </Link>
         <Stack direction="row" className={styles.links}>
-            <Link href="/docs/installation">
+            <Link href="/docs">
                 <Text>Docs</Text>
-            </Link>
-            <Link href="/examples/hello-world">
-                <Text>Examples</Text>
             </Link>
             <Link href="https://github.com/pxe-js" target="_blank">
                 <Text>Github</Text>

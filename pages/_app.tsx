@@ -1,21 +1,45 @@
-import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
+
+import { MDXProvider } from '@mdx-js/react';
 import { ChakraProvider } from '@chakra-ui/react';
-import Head from 'next/head';
+
 import ConnectionCheck from '../components/ConnectionCheck';
 import ColorMode from '../components/ColorMode';
 
+import appStyles from '../styles/App.module.scss';
+import mdStyles from '../styles/Markdown.module.scss';
+
+import { useRouter } from 'next/router';
+import Head from '../components/Head';
+
+import meta from '../utils/pagesMetadata';
+
+import components from '../utils/mdxComponent';
+
 function App({ Component, pageProps }: AppProps) {
+	const router = useRouter();
+	const headProps = meta[router.asPath] ?? {};
+
+	// Markdown page
+	if (Component.name === "MDXContent") {
+		return <>
+			<Head {...headProps} />
+			<MDXProvider components={components}>
+				<div className={mdStyles.wrapper}>
+					<Component {...pageProps} />
+				</div>
+			</MDXProvider>
+		</>;
+	}
+
+	// Normal page
 	return <ChakraProvider>
-		<Head>
-			<meta name="viewport" content="width=device-width" />
-			<title>{pageProps?.head?.title || "Document"}</title>
-			<meta name="description" content={pageProps?.head?.description || "A page"} />
-			<link rel="icon" href="/favicon.svg" />
-		</Head>
+		<Head {...headProps} />
 		<ConnectionCheck />
 		<ColorMode initMode="dark">
-			<Component {...pageProps} />
+			<div className={appStyles.wrapper}>
+				<Component {...pageProps} router={router} />
+			</div>
 		</ColorMode>
 	</ChakraProvider>;
 };

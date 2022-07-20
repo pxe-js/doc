@@ -1,0 +1,36 @@
+# PXE.js
+An extremely lightweight framework for writing web applications and APIs.
+
+## Installation
+
+Install PXE.js using NPM or Yarn:
+```bash
+npm i @pxe/server
+# or
+yarn add @pxe/server
+```
+
+## Application
+
+This is how a PXE.js application resolves a request:
+- If request URL is `/favicon.ico` return the icon registered by `icon` method. 
+    + If there is no icon registered then end the response.
+- Create the request context object.
+- Start running the middlewares. 
+    + If any error occured call the error handler registered by `onError` method. 
+    + If there is no error handler then throws the error.
+- End the response.
+
+A PXE.js [hello world](https://runkit.com/aquapi/hello-world-pxe.js) application:
+```typescript
+const Server = require("@pxe/server");
+
+const app = new Server();
+
+app.use(async ctx => {
+    ctx.response.body = "Hello world!";
+});
+
+app.ls(3000);
+```
+
