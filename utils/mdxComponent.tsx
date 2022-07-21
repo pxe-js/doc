@@ -1,7 +1,9 @@
 import { MDXComponents } from "mdx/types";
-// @ts-ignore
-import Lowlight from "react-lowlight";
+import { toH } from "hast-to-hyperscript";
+// Import all languages
 import "lowlight/lib/all";
+import { createElement } from "react";
+import { lowlight } from "lowlight/lib/all";
 
 const components: MDXComponents = {
     code(props) {
@@ -9,7 +11,13 @@ const components: MDXComponents = {
         if (!match || !match[1]) 
             return <code {...props} />
 
-        return <Lowlight language={match[1]} value={props.children?.toString() || ""} />
+        return toH(
+            createElement, 
+            lowlight.highlight(
+                match[1], 
+                props.children?.toString() || ""
+            )
+        );
     }
 };
 

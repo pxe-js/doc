@@ -16,12 +16,12 @@
 		"@mdx-js/react": "^2.1.2",
 		"@next/mdx": "^12.2.2",
 		"framer-motion": "^6.5.1",
+		"hast-to-hyperscript": "^10.0.1",
 		"highlight.js": "^11.6.0",
 		"lowlight": "^2.7.0",
 		"next": "12.2.2",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
-		"react-lowlight": "^3.0.0",
 		"sass": "^1.53.0"
 	},
 	"devDependencies": {

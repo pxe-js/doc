@@ -6,8 +6,12 @@ import { ChakraProvider } from '@chakra-ui/react';
 import ConnectionCheck from '../components/ConnectionCheck';
 import ColorMode from '../components/ColorMode';
 
+// App style, markdown style
 import appStyles from '../styles/App.module.scss';
 import mdStyles from '../styles/Markdown.module.scss';
+
+// Code style
+import "../styles/components/Code.scss";
 
 import { useRouter } from 'next/router';
 import Head from '../components/Head';
@@ -15,8 +19,6 @@ import Head from '../components/Head';
 import meta from '../utils/pagesMetadata';
 
 import components from '../utils/mdxComponent';
-
-import "../styles/components/Code.scss";
 
 function App({ Component, pageProps }: AppProps) {
 	const router = useRouter();
