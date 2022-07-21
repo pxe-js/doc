@@ -12,7 +12,11 @@ const pages: PagesMetadata = {
     },
     "/docs": {
         title: "Introduction",
-        description: "PXE.js introduction"
+        description: "PXE.js introduction",
+    },
+    "/docs/server": {
+        title: "@pxe/server",
+        description: "The server module of PXE.js",
     }
 };
 

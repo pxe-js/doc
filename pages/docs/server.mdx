@@ -1,0 +1,66 @@
+# Server
+These are all server methods and events.
+
+### Method: `app.use`
+- `...m: Middleware[]`: The middleware
+
+Add a middleware to the middleware list.
+You can add multiple middleware within a single call.
+
+### Method: `app.on`
+- `event: string`: The event name
+- `handler: (...args: any[]) => Promise<void> | void`: The event listener
+
+Add an listener of an event.
+
+### Method: `app.emit`
+- `event: string`: The event name
+- `...args: any[]`: The parameter to apply to the function call
+- Returns: `Promise<void> | void | boolean`
+
+Trigger the listener of an event.
+If the event listener does not exist return `false`.
+
+### Method: `app.ls`
+- `port?: number`: The target port
+- `hostname?: string`: The target hostname
+- `backlog?: number`: The backlog
+- `listeningListener`: Runs when the server finished starting
+- Returns: `http.Server`
+
+Start a server listening for connections. 
+A short way for calling:
+
+```typescript
+const server = http.createServer(app);
+server.listen(port, host, backlog, listeningListener);
+```
+
+### Method: `app.icon`
+- `path: string`: The icon path
+
+Set the icon of the app. 
+On each request with request URL equals `/favicon.ico` the icon is returned.
+
+### Method: `app.set`
+- Type parameters: `T`
+- `key: string`: The key
+- `value: T`: The value
+
+Save the key value pair to the app storage.
+
+### Method: `app.get`
+- `key: string`: The key
+
+Get the key value from the app storage.
+
+### Event: `error`
+- `err: any`: The error
+- `ctx: Context`: The context object of the current request
+
+Trigger when an error occurred while running the middlewares.
+
+### Event: `beforeFinish`
+- `ctx: Context`: The context object of the current request
+
+Trigger after running all the middlewares.

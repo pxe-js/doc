@@ -1,3 +1,13 @@
-#markdown {
+// Apply to only MDX page
+#markdown_page {
     @import "../../node_modules/highlight.js/scss/github-dark.scss";
+
+    p, li {
+        font-size: 15px;
+    }
+
+    pre {
+        background-color: #161B22;
+        padding: 9px 12px
+    }
 }

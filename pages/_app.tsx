@@ -10,8 +10,9 @@ import ColorMode from '../components/ColorMode';
 import appStyles from '../styles/App.module.scss';
 import mdStyles from '../styles/Markdown.module.scss';
 
-// Code style
+// Code style and global style
 import "../styles/components/Code.scss";
+import "../styles/globals.scss";
 
 import { useRouter } from 'next/router';
 import Head from '../components/Head';
@@ -29,8 +30,10 @@ function App({ Component, pageProps }: AppProps) {
 		return <>
 			<Head {...headProps} />
 			<MDXProvider components={components}>
-				<div className={mdStyles.wrapper} id="markdown">
-					<Component {...pageProps} />
+				<div className={mdStyles.wrapper} >
+					<div id="markdown_page" className={mdStyles.markdownWrapper}>
+						<Component {...pageProps} />
+					</div>
 				</div>
 			</MDXProvider>
 		</>;
