@@ -14,7 +14,7 @@ yarn add @pxe/server
 
 The application is an object containing an array of middleware which are executed in sequence upon request. 
 
-A PXE.js [hello world](https://runkit.com/aquapi/hello-world-pxe.js) application:
+A PXE.js hello world application:
 ```typescript
 const Server = require("@pxe/server");
 
@@ -29,7 +29,7 @@ app.ls(3000);
 
 ## Middlewares
 
-PXE.js middlewares are Connect-style middlewares with async functions, which makes control flows easier.
+PXE.js middlewares are basically Connect-style middlewares but asynchronous, which makes control flows easier.
 
 The following example responses with an object with the time when the request started, the requested URL and method.
 ```typescript
@@ -56,3 +56,6 @@ The first middleware calls `next()`, which runs the next middleware.
 The next middleware set the response body to an object with property `time` equals the current date.
 
 The first middleware set the response body property `url` to the requested URL and property `method` to requested method.
+
+## Methods
+All the application methods.

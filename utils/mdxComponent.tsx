@@ -15,7 +15,7 @@ const components: MDXComponents = {
             createElement, 
             lowlight.highlight(
                 match[1], 
-                props.children?.toString() || ""
+                props.children?.toString() || "",
             )
         );
     }
