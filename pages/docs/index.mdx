@@ -1,5 +1,5 @@
-## Introduction
-PXE.js is an extremely lightweight framework for writing web applications and APIs.
+# PXE.js
+A lightweight framework for writing web applications and APIs.
 
 ## Installation
 
@@ -12,14 +12,7 @@ yarn add @pxe/server
 
 ## Application
 
-This is how a PXE.js application resolves a request:
-- If request URL is `/favicon.ico` return the icon registered by `icon` method. 
-    + If there is no icon registered then end the response.
-- Create the request context object.
-- Start running the middlewares. 
-    + If any error occured call the error handler registered by `onError` method. 
-    + If there is no error handler then throws the error.
-- End the response.
+The application is an object containing an array of middleware which are executed in sequence upon request. 
 
 A PXE.js [hello world](https://runkit.com/aquapi/hello-world-pxe.js) application:
 ```typescript
@@ -34,3 +27,32 @@ app.use(async ctx => {
 app.ls(3000);
 ```
 
+## Middlewares
+
+PXE.js middlewares are Connect-style middlewares with async functions, which makes control flows easier.
+
+The following example responses with an object with the time when the request started, the requested URL and method.
+```typescript
+const Server = require("@pxe/server");
+
+const app = new Server();
+
+app.use(async (ctx, next) => {
+    await next();
+    ctx.response.body.url = ctx.request.url;
+    ctx.response.body.method = ctx.request.method;
+});
+
+app.use(async ctx => {
+    const time = new Date();
+    ctx.response.body = { time };
+});
+
+app.ls(3000);
+```
+
+The first middleware calls `next()`, which runs the next middleware. 
+
+The next middleware set the response body to an object with property `time` equals the current date.
+
+The first middleware set the response body property `url` to the requested URL and property `method` to requested method.

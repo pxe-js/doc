@@ -1,6 +1,7 @@
 import { MDXComponents } from "mdx/types";
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { vs2015 } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+// @ts-ignore
+import Lowlight from "react-lowlight";
+import "lowlight/lib/all";
 
 const components: MDXComponents = {
     code(props) {
@@ -8,9 +9,7 @@ const components: MDXComponents = {
         if (!match || !match[1]) 
             return <code {...props} />
 
-        return <SyntaxHighlighter language={match[1]} style={vs2015}>
-            {props.children?.toString() ?? ""}
-        </SyntaxHighlighter>
+        return <Lowlight language={match[1]} value={props.children?.toString() || ""} />
     }
 };
 

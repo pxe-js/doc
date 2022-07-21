@@ -16,6 +16,8 @@ import meta from '../utils/pagesMetadata';
 
 import components from '../utils/mdxComponent';
 
+import "../styles/components/Code.scss";
+
 function App({ Component, pageProps }: AppProps) {
 	const router = useRouter();
 	const headProps = meta[router.asPath] ?? {};
@@ -25,7 +27,7 @@ function App({ Component, pageProps }: AppProps) {
 		return <>
 			<Head {...headProps} />
 			<MDXProvider components={components}>
-				<div className={mdStyles.wrapper}>
+				<div className={mdStyles.wrapper} id="markdown">
 					<Component {...pageProps} />
 				</div>
 			</MDXProvider>
