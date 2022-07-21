@@ -17,15 +17,15 @@ import { useRouter } from 'next/router';
 import Head from '../components/Head';
 
 import meta from '../utils/pagesMetadata';
-
 import components from '../utils/mdxComponent';
+import isMDX from '../utils/isMDX';
 
 function App({ Component, pageProps }: AppProps) {
 	const router = useRouter();
 	const headProps = meta[router.asPath] ?? {};
 
 	// Markdown page
-	if (Component.toString() === "function(){var a=arguments.length>0&& void 0!==arguments[0]?arguments[0]:{},b=Object.assign({},(0,e.ah)(),a.components).wrapper;return b?(0,d.jsx)(b,Object.assign({},a,{children:(0,d.jsx)(f,a)})):f(a)}" || Component.name === "MDXContent") {
+	if (isMDX(Component)) {
 		return <>
 			<Head {...headProps} />
 			<MDXProvider components={components}>
