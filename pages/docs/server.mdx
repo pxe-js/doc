@@ -1,5 +1,5 @@
 # Server
-These are all server methods, events and declarations.
+These are all `@pxe/server` module methods, events and declarations.
 
 ## Method: `app.use`
 - `...m: Middleware[]`: The middleware
@@ -64,6 +64,28 @@ Trigger when an error occurred while running the middlewares.
 - `ctx: Context`: The context object of the current request
 
 Trigger after running all the middlewares.
+
+## Type: `RequestMethod`
+- `"GET" | "POST" | "PUT" | "DELETE" | "HEAD" | "OPTIONS" | "PATCH" | "CONNECT" | "TRACE"`
+
+All the request method.
+
+## Type: `MIMEType`
+- `"audio/aac" | "application/x-abiword" | "application/x-freearc" | "image/avif" | "video/x-msvideo" | "application/vnd.amazon.ebook" | "application/octet-stream" | "image/bmp" | "application/x-bzip" | "application/x-bzip2" | "application/x-csh" | "application/x-cdf" | "text/css" | "text/csv" | "application/msword" | "application/vnd.ms-fontobject" | "application/gzip" | "application/vnd.openxmlformats-officedocument.wordprocessingml.document" | "application/epub+zip" | "image/gif" | "text/html" | "image/vnd.microsoft.icon" | "text/calendar" | "application/java-archive" | "image/jpeg" | "text/javascript" | "application/json" | "application/ld+json" | "audio/midi" | "audio/x-midi" | "audio/mpeg" | "video/mp4" | "application/vnd.apple.installer+xml" | "application/vnd.oasis.opendocument.presentation" | "application/vnd.oasis.opendocument.spreadsheet" | "application/vnd.oasis.opendocument.text" | "audio/ogg" | "video/ogg" | "application/ogg" | "audio/opus" | "font/otf" | "image/png" | "application/pdf" | "image/svg+xml" | "application/x-httpd-php" | "application/vnd.ms-powerpoint" | "application/vnd.rar" | "application/rtf" | "application/vnd.openxmlformats-officedocument.presentationml.presentation" | "application/x-sh" | "application/x-shockwave-flash" | "application/x-tar" | "image/tiff" | "font/ttf" | "video/mp2t" | "text/plain" | "application/vnd.visio" | "audio/wav" | "audio/webm" | "image/webp" | "font/woff" | "font/woff2" | "application/xhtml+xml" | "application/vnd.ms-excel" | "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" | "application/xml" | "text/xml" | "application/atom+xml" | "application/vnd.mozilla.xul+xml" | "application/zip" | "video/3gpp" | "audio/3gpp" | "video/3gpp2" | "audio/3gpp2" | "application/x-7z-compressed" | "application/x-www-form-urlencoded"`
+
+All the common MIME types.
+
+## Interface: `Middleware`
+- `ctx: Context`: The current request context
+- `next: NextFunction`: The function that calls the next middleware
+- `...args: any[]`: The arguments passed by the previous middleware 
+
+The middleware type.
+
+## Interface: `NextFunction`
+- `..args: any[]`: The arguments to pass to the next middleware
+
+The next function type.
 
 ## Interface: `Context`
 All the properties of a context object.
@@ -189,7 +211,7 @@ If set to `false`, the response is not finished.
 #### Property: `options.useDefaultCookie`
 - Type: `boolean`
 
-Whether to set cookie or not. The default value is `true`.
+Whether to set cookie or not. The default value is `false`.
 
 If set to `false`, the cookie is not modified.
 

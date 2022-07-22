@@ -20,19 +20,33 @@ import Head from '../components/Head';
 import meta from '../utils/pagesMetadata';
 import components from '../utils/mdxComponent';
 import isMDX from '../utils/isMDX';
+import Link from 'next/link';
+import { useEffect, useMemo } from 'react';
 
 function App({ Component, pageProps }: AppProps) {
 	const router = useRouter();
+
 	const headProps = meta[router.asPath] ?? {};
 
-	// Markdown page
-	if (isMDX(Component)) {
+	const isMarkdownPage = useMemo(() => isMDX(Component), [Component]);
+
+	useEffect(() => {
+		if (isMarkdownPage) 
+			document.getElementById("markdown_page")?.scroll(0, 0);
+	}, [isMarkdownPage, router]);
+
+	// Markdown page render
+	if (isMarkdownPage) {
 		return <>
 			<Head {...headProps} />
 			<MDXProvider components={components}>
 				<div className={mdStyles.wrapper} >
 					<div id="markdown_page" className={mdStyles.markdownWrapper}>
 						<Component {...pageProps} />
+						<div className={mdStyles.links}>
+							<div>{headProps.prev && <Link href={headProps.prev}>Previous</Link>}</div>
+							<div>{headProps.next && <Link href={headProps.next}>Next</Link>}</div>
+						</div>
 					</div>
 				</div>
 			</MDXProvider>

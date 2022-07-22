@@ -1,7 +1,9 @@
 export interface PagesMetadata { 
     [path: string]: { 
         title: string, 
-        description: string 
+        description: string,
+        next?: string,
+        prev?: string,
     }; 
 }
 
@@ -13,10 +15,12 @@ const pages: PagesMetadata = {
     "/docs": {
         title: "Introduction",
         description: "PXE.js introduction",
+        next: "/docs/server",
     },
     "/docs/server": {
         title: "@pxe/server",
         description: "The server module of PXE.js",
+        prev: "/docs",
     }
 };
 
