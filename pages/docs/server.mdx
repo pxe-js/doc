@@ -1,19 +1,19 @@
 # Server
-These are all server methods and events.
+These are all server methods, events and declarations.
 
-### Method: `app.use`
+## Method: `app.use`
 - `...m: Middleware[]`: The middleware
 
 Add a middleware to the middleware list.
 You can add multiple middleware within a single call.
 
-### Method: `app.on`
+## Method: `app.on`
 - `event: string`: The event name
 - `handler: (...args: any[]) => Promise<void> | void`: The event listener
 
 Add an listener of an event.
 
-### Method: `app.emit`
+## Method: `app.emit`
 - `event: string`: The event name
 - `...args: any[]`: The parameter to apply to the function call
 - Returns: `Promise<void> | void | boolean`
@@ -21,7 +21,7 @@ Add an listener of an event.
 Trigger the listener of an event.
 If the event listener does not exist return `false`.
 
-### Method: `app.ls`
+## Method: `app.ls`
 - `port?: number`: The target port
 - `hostname?: string`: The target hostname
 - `backlog?: number`: The backlog
@@ -36,31 +36,161 @@ const server = http.createServer(app);
 server.listen(port, host, backlog, listeningListener);
 ```
 
-### Method: `app.icon`
+## Method: `app.icon`
 - `path: string`: The icon path
 
 Set the icon of the app. 
 On each request with request URL equals `/favicon.ico` the icon is returned.
 
-### Method: `app.set`
+## Method: `app.set`
 - Type parameters: `T`
 - `key: string`: The key
 - `value: T`: The value
 
 Save the key value pair to the app storage.
 
-### Method: `app.get`
+## Method: `app.get`
 - `key: string`: The key
 
 Get the key value from the app storage.
 
-### Event: `error`
+## Event: `error`
 - `err: any`: The error
 - `ctx: Context`: The context object of the current request
 
 Trigger when an error occurred while running the middlewares.
 
-### Event: `beforeFinish`
+## Event: `beforeFinish`
 - `ctx: Context`: The context object of the current request
 
 Trigger after running all the middlewares.
+
+## Interface: `Context`
+All the properties of a context object.
+
+### Request
+All the properties of `ctx.request`.
+
+#### Property: `request.raw`
+- Type: `http.IncomingMessage`
+
+The raw HTTP request object.
+This property is read-only.
+
+#### Property: `request.method`
+- Type: `Server.RequestMethod`
+
+The request method.
+This property is read-only.
+
+#### Property: `request.url`
+- Type: `string`
+
+This property is read-only.
+The request URL.
+
+#### Property: `request.headers`
+- Type: `http.IncomingHttpHeaders`
+
+This property is read-only.
+Parsed request headers.
+
+#### Property: `request.body`
+- Type: `any`
+
+This property is read-only.
+The parsed request body.
+
+#### Property: `request.query`
+- Type: `Record<string, string>`
+
+This property is read-only.
+The parsed request query.
+
+### Response
+All the properties and methods of `ctx.response`.
+
+#### Property: `response.raw`
+- Type: `http.ServerResponse`
+
+The raw HTTP response object.
+This property is read-only.
+
+#### Property: `response.body`
+- Type: `any`
+
+The response body. 
+Modify this to modify the response.
+If `response.body`, `response.status.code` and `response.status.message` are not set a 404 error is returned to the client.
+
+#### Property: `response.type`
+- Type: `Server.MIMEType`
+
+The content type of the response.
+If this property is not set the content type is chosen base on the response.
+
+#### Property: `response.status`
+- Properties:
+    + `code?: number`: The status code.
+    + `message?: string`: The status message.
+
+Set the status code and status message. This property is read-only.
+
+#### Property: `response.headers`
+- Type: `Record<string, string | readonly string[] | number>`
+
+Set the response headers. This property is read-only.
+
+You cannot directly set the headers using `response.headers = ...`.
+
+Instead use `Object.assign(response.headers, ...)`.
+
+#### Method: `response.redirect`
+- `url: string`: The target URL
+- `permanent?: boolean`: Whether this redirect is a permanent redirect or not
+
+Redirect to different URL.
+
+### Cookie
+All the properties and methods of `ctx.cookie`.
+
+#### Property: `cookie.options`
+- Type: `Server.CookieOptions`
+
+The cookie options.
+
+#### Property: `cookie.value`
+- Type: `string`
+
+The cookie value in `string`. Modify this property to modify the cookie value.
+
+#### Method: `cookie.remove`
+Remove the cookie. After this call `cookie.value` cannot be used to set cookie value and `cookie.removed` is set to `true`.
+
+#### Property: `cookie.removed`
+- Type: `boolean`
+
+Check whether the request cookie is removed.
+
+### Request options
+All the properties of `ctx.options`.
+
+#### Property: `options.finishResponse`
+- Type: `boolean | ((ctx: Context) => Promise<void> | void)`
+
+Specify the way the response is finished. The default value is `true`.
+
+If set to `true`, the response is finished using the default callback.
+
+If set to a function, the response is finished by calling that function.
+
+If set to `false`, the response is not finished.
+
+#### Property: `options.useDefaultCookie`
+- Type: `boolean`
+
+Whether to set cookie or not. The default value is `true`.
+
+If set to `false`, the cookie is not modified.
+
+If set to `true`, the cookie will be modified based on the cookie value of `ctx.cookie`.

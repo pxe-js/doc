@@ -24,7 +24,7 @@ const Server = require("@pxe/server");
 const app = new Server();
 
 app.use(async (ctx) => {
-  ctx.response.body = "Hello world!";
+    ctx.response.body = "Hello world!";
 });
 
 app.ls(3000);
@@ -42,14 +42,14 @@ const Server = require("@pxe/server");
 const app = new Server();
 
 app.use(async (ctx, next) => {
-  await next();
-  ctx.response.body.url = ctx.request.url;
-  ctx.response.body.method = ctx.request.method;
+    await next();
+    ctx.response.body.url = ctx.request.url;
+    ctx.response.body.method = ctx.request.method;
 });
 
 app.use(async (ctx) => {
-  const time = new Date();
-  ctx.response.body = { time };
+    const time = new Date();
+    ctx.response.body = { time };
 });
 
 app.ls(3000);
@@ -61,10 +61,12 @@ The next middleware set the response body to an object with property `time` equa
 
 The first middleware set the response body property `url` to the requested URL and property `method` to requested method.
 
-## Context
+## Context 
 The context is an object containing informations of the request and provides a way to manipulate the response.
 A default PXE.js context objects contains:
+
 - `ctx.request`: All things about the request
 - `ctx.response`: The response
 - `ctx.cookie`: The current cookie
 - `ctx.options`: Request options
+
