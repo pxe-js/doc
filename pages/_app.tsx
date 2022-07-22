@@ -31,7 +31,7 @@ function App({ Component, pageProps }: AppProps) {
 	const isMarkdownPage = useMemo(() => isMDX(Component), [Component]);
 
 	useEffect(() => {
-		if (!localStorage.getItem("chakra-ui-color-mode")) {
+		if (localStorage.getItem("chakra-ui-color-mode") !== "dark" && isMarkdownPage) {
 			localStorage.setItem("chakra-ui-color-mode", "dark");
 			window.location.reload();
 		}
