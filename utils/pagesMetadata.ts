@@ -21,7 +21,14 @@ const pages: PagesMetadata = {
         title: "@pxe/server",
         description: "The server module of PXE.js",
         prev: "/docs",
-    }
+        next: "/docs/router"
+    },
+    "/docs/router": {
+        title: "@pxe/router",
+        description: "The router module of PXE.js",
+        prev: "/docs/server",
+        next: "/docs/cors"
+    },
 };
 
 export default pages;

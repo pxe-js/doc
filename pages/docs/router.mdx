@@ -1,0 +1,37 @@
+# Router
+All the router methods, event and declarations.
+
+## Constructor: `Router`
+- `root?: string`: The root URL
+
+Construct a router. The root is used to run the middlewares if the request URL starts with the root URL.
+
+## Method: `router.use`
+- `...m: Middleware[]`: The middleware
+
+Add a middleware to the middleware list.
+You can add multiple middleware within a single call.
+
+## Method: `route.handle`
+- `route: string`: The target route path name
+- `handler: Router.RouteHandler`: The route handler
+
+Register a handler for a specific path name.
+
+## Method: `route.param`
+- `route: string`: The target route path name
+- `handler: Router.RouteHandler`: The route handler
+
+The same as `route.param`, but instead handles dymanic routes.
+
+## Method: `route.cb`
+- `ctx: Server.Context`: The server context
+- `next: Server.NextFunction`: Call the next middleware 
+- `...args: any[]`: The previous middleware passed arguments
+
+The callback of the router. This can be used as a middleware:
+```typescript
+app.use(router.cb.bind(router));
+// Or shorter
+app.use(router);
+```

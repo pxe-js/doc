@@ -1,6 +1,20 @@
 # Server
 These are all `@pxe/server` module methods, events and declarations.
 
+## Constructor: `Server`
+Create a server instance.
+
+## Method: `app.cb`
+- `req: http.IncomingMessage`: The request 
+- `res: http.ServerResponse`: The response
+
+The server callback. Can be used to create HTTP server:
+```typescript
+const server = http.createServer(app.cb.bind(app));
+// Or even shorter
+const server = http.createServer(app);
+```
+
 ## Method: `app.use`
 - `...m: Middleware[]`: The middleware
 
