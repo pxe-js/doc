@@ -12,9 +12,14 @@ const pages: PagesMetadata = {
         title: "PXE.js: A web framework",
         description: "A web framework"
     },
+    "/docs/getting-started": {
+        title: "Getting started",
+        description: "Starting writing web applications with PXE.js",
+        next: "/docs",
+    },
     "/docs": {
-        title: "Introduction",
-        description: "PXE.js introduction",
+        title: "Basic concepts",
+        description: "PXE.js basic concepts",
         next: "/docs/server",
     },
     "/docs/server": {

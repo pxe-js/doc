@@ -1,0 +1,35 @@
+# PXE.js
+
+A Node.js framework for writing applications and APIs.
+
+## Installation
+
+Install PXE.js using NPM or Yarn:
+
+```bash
+npm i @pxe/server
+# or
+yarn add @pxe/server
+```
+
+## Hello world
+
+Let's get started with a simple `Hello world` application:
+
+```typescript
+const Server = require("@pxe/server");
+
+// Create a web application
+const app = new Server();
+
+// Add a middleware. This callback will be called on each request.
+app.use(async (ctx) => {
+  // Set the response body to "Hello world"
+  ctx.response.body = "Hello world";
+});
+
+// Start the server at port 8080 listening for connections.
+app.ls(8080);
+```
+
+The above example responses `Hello world` on every request to [http://localhost:8080](http://localhost:8080).

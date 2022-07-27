@@ -1,5 +1,5 @@
 import { Button, Flex, Heading, Link, Stack, Text } from '@chakra-ui/react';
-import type { GetStaticProps, NextPage } from 'next';
+import type { NextPage } from 'next';
 import { colorScheme, color, contentInCenter } from '../utils/constants';
 import Image from "next/image";
 import styles from "../styles/pages/Home.module.scss";
