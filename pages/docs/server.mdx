@@ -131,11 +131,10 @@ The request URL.
 This property is read-only.
 Parsed request headers.
 
-#### Property: `request.body`
-- Type: `any`
+#### Method: `request.getBody`
+- Returns: `Promise<any>`
 
-This property is read-only.
-The parsed request body.
+Get the request body.
 
 #### Property: `request.query`
 - Type: `Record<string, string>`
