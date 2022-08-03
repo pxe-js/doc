@@ -27,6 +27,26 @@ All CORS middleware options.
 Allows the specified origins to make request to the server. By default all origins are allowed.
 
 ### Property: `options.allowMethods`
-- Type: `Server.RequestMethod | Server.RequestMethod[]`
+- Type: `string | Server.RequestMethod[]`
 
 Allow clients to request to the server with specified request method. By default all methods are allowed.
+
+### Property: `options.exposeHeaders`
+- Type: `string | string[]`
+
+Expose specified headers to the client. `Cache-Control`, `Content-Length`, `Content-Language`, `Content-Type`, `Expires`, `Last-Modified`, `Pragma` are headers that is exposed by default.
+
+### Property: `options.maxAge`
+- Type: `number`
+
+Maximum number of seconds the results can be cached, as an unsigned non-negative integer. The default value is `5`.
+
+### Property: `options.allowCredentials`
+- Type: `boolean`
+
+Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials.
+
+### Property: `options.allowHeaders`
+- Type: `string | string[]`
+
+Indicate which HTTP headers can be used when making the actual request. This field is optional.
