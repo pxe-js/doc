@@ -24,14 +24,14 @@ Register a handler for a specific path name.
 
 The same as `route.param`, but instead handles dymanic routes.
 
-## Method: `route.cb`
+## Method: `route.invoke`
 - `ctx: Server.Context`: The server context
 - `next: Server.NextFunction`: Call the next middleware 
 - `...args: any[]`: The previous middleware passed arguments
 
 The callback of the router. This can be used as a middleware:
 ```typescript
-app.use(router.cb.bind(router));
+app.use(router.invoke.bind(router));
 // Or shorter
 app.use(router);
 ```

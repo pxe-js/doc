@@ -12,12 +12,16 @@ const pages: PagesMetadata = {
         title: "PXE.js: A web framework",
         description: "A web framework"
     },
+    "/docs": {
+        title: "About the docs",
+        description: "Contents and changelogs"
+    },
     "/docs/getting-started": {
         title: "Getting started",
         description: "Starting writing web applications with PXE.js",
         next: "/docs",
     },
-    "/docs": {
+    "/docs/basic-concepts": {
         title: "Basic concepts",
         description: "PXE.js basic concepts",
         next: "/docs/server",
@@ -34,6 +38,10 @@ const pages: PagesMetadata = {
         prev: "/docs/server",
         next: "/docs/cors"
     },
+    "/docs/cors": {
+        title: "@pxe/cors",
+        description: "PXE.js module to handle Cross-origin resource sharing"
+    }
 };
 
 export default pages;

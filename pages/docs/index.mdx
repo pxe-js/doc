@@ -1,63 +1,18 @@
-# Basic concepts
-All PXE.js basic concepts.
+# About the docs
+This is the official docs for [PXE.js](https://github.com/pxe-js), a Node.js framework for writing web applications and APIs.
 
-## Application
+## Contents
+- [Getting started](https://pxe.vercel.app/docs/getting-started)
+- [Basic Concepts](https://pxe.vercel.app/docs/basic-concepts)
+- [Server](https://pxe.vercel.app/docs/server)
+- [Router](https://pxe.vercel.app/docs/router)
 
-The application is an object containing an array of middleware which are executed in sequence upon request.
+## Changelog
+List changes of all modules.
 
-A PXE.js hello world application:
+### Server
+All changes starting from 1.0.12.
 
-```typescript
-const Server = require("@pxe/server");
-
-const app = new Server();
-
-app.use(async (ctx) => {
-    ctx.response.body = "Hello world!";
-});
-
-app.ls(3000);
-```
-
-## Middlewares
-
-PXE.js middlewares are basically Connect-style middlewares but asynchronous, which makes control flows easier.
-
-The following example responses with an object with the time when the request started, the requested URL and method.
-
-```typescript
-const Server = require("@pxe/server");
-
-const app = new Server();
-
-app.use(async (ctx, next) => {
-    await next();
-    ctx.response.body.url = ctx.request.url;
-    ctx.response.body.method = ctx.request.method;
-});
-
-app.use(async (ctx) => {
-    const time = new Date();
-    ctx.response.body = { time };
-});
-
-app.ls(3000);
-```
-
-The first middleware calls `next()`, which runs the next middleware.
-
-The next middleware set the response body to an object with property `time` equals the current date.
-
-The first middleware set the response body property `url` to the requested URL and property `method` to requested method.
-
-## Context 
-The context is an object containing informations of the request and provides a way to manipulate the response.
-A default PXE.js context objects contains:
-
-- `ctx.request`: All things about the request
-- `ctx.response`: The response
-- `ctx.cookie`: The current cookie
-- `ctx.options`: Request options
-
-### Notes
-This documentation is for the next release, 1.0.11.
+#### 1.0.12-alpha.1
+- Fix icon bug.
+- If the response body is a `Buffer` object return the response body directly without parsing it to a `string`.

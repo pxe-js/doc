@@ -1,0 +1,60 @@
+# Basic concepts
+All PXE.js basic concepts.
+
+## Application
+
+The application is an object containing an array of middleware which are executed in sequence upon request.
+
+A PXE.js hello world application:
+
+```typescript
+const Server = require("@pxe/server");
+
+const app = new Server();
+
+app.use(async (ctx) => {
+    ctx.response.body = "Hello world!";
+});
+
+app.ls(3000);
+```
+
+## Middlewares
+
+PXE.js middlewares are basically Connect-style middlewares but asynchronous, which makes control flows easier.
+
+The following example responses with an object with the time when the request started, the requested URL and method.
+
+```typescript
+const Server = require("@pxe/server");
+
+const app = new Server();
+
+app.use(async (ctx, next) => {
+    await next();
+    ctx.response.body.url = ctx.request.url;
+    ctx.response.body.method = ctx.request.method;
+});
+
+app.use(async (ctx) => {
+    const time = new Date();
+    ctx.response.body = { time };
+});
+
+app.ls(3000);
+```
+
+The first middleware calls `next()`, which runs the next middleware.
+
+The next middleware set the response body to an object with property `time` equals the current date.
+
+The first middleware set the response body property `url` to the requested URL and property `method` to requested method.
+
+## Context 
+The context is an object containing informations of the request and provides a way to manipulate the response.
+A default PXE.js context objects contains:
+
+- `ctx.request`: All things about the request
+- `ctx.response`: The response
+- `ctx.cookie`: The current cookie
+- `ctx.options`: Request options
