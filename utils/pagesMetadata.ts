@@ -40,7 +40,8 @@ const pages: PagesMetadata = {
     },
     "/docs/cors": {
         title: "@pxe/cors",
-        description: "PXE.js module to handle Cross-origin resource sharing"
+        description: "PXE.js module to handle Cross-origin resource sharing",
+        prev: "/docs/router"
     }
 };
 
