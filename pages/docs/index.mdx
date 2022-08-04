@@ -1,19 +1,50 @@
+import HLink from "../../components/HLink";
+
 # About the docs
 This is the official docs for [PXE.js](https://github.com/pxe-js), a Node.js framework for writing web applications and APIs.
 
 ## Contents
-- [Getting started](https://pxe.vercel.app/docs/getting-started)
-- [Basic Concepts](https://pxe.vercel.app/docs/basic-concepts)
-- [Server](https://pxe.vercel.app/docs/server)
-- [Router](https://pxe.vercel.app/docs/router)
-- [Cors](https://pxe.vercel.app/docs/cors)
+- [Getting started](/docs/getting-started)
+- [Basic Concepts](/docs/basic-concepts)
+- [Server](/docs/server)
+- [Router](/docs/router)
+- [Cors](/docs/cors)
 
 ## Changelog
-List changes of all modules.
+List changes of all modules:
+- [Server](#server)
+- [Router](#router)
+- [Database](#database)
+- [Cors](#cors)
+- [Utils](#utils)
+- [Session](#session)
+- [CSP](#csp)
 
-### Server
-All changes starting from 1.0.12.
+<HLink content="Server" type="###" />
+All changes of `@pxe/server` starting from 1.0.12.
 
 #### 1.0.12-alpha.1
 - Fix icon bug.
 - If the response body is a `Buffer` object return the response body directly without parsing it to a `string`.
+
+<HLink content="Router" type="###" />
+All changes of `@pxe/router` starting from 1.0.2.
+
+<HLink content="Database" type="###" />
+All changes of `@pxe/database` starting from 1.0.1.
+
+<HLink content="Cors" type="###" />
+All changes of `@pxe/cors` starting from 1.0.2.
+
+<HLink content="Utils" type="###" />
+All changes of `@pxe/utils` starting from 1.0.1.
+
+<HLink content="Session" type="###" />
+All changes of `@pxe/session` starting from 1.0.1.
+
+<HLink content="CSP" type="###" />
+All changes of `@pxe/cors` starting from 1.0.0.
+
+#### 1.0.0-alpha.1
+- Create CSP middleware
+- Move all options parsing to constructor
