@@ -19,16 +19,17 @@ import Head from '../components/Head';
 
 import meta from '../utils/pagesMetadata';
 import components from '../utils/mdxComponent';
-import isMDX from '../utils/isMDX';
 import Link from 'next/link';
 import { useEffect, useMemo } from 'react';
 
 function App({ Component, pageProps }: AppProps) {
 	const router = useRouter();
 
-	const headProps = meta[router.asPath] ?? {};
+	const headProps = meta[router.asPath] || {};
 
-	const isMarkdownPage = useMemo(() => isMDX(Component), [Component]);
+	const isMarkdownPage = useMemo(() => 
+		!!headProps.isMarkdown, 
+	[headProps.isMarkdown]);
 
 	useEffect(() => {
 		if (isMarkdownPage) 
