@@ -36,9 +36,18 @@ All the methods of `db.collect`.
 - `count?: number`: Number of objects to be removed.
 
 ## Method: `find`
+- `o: any`: Key that will be matched to objects.
+- `count?: number`: Number of objects to be removed.
 
 ## Method: `findOne`
+- `o: any`: Key that will be matched to objects.
 
 ## Method: `update`
+- `o: any`: Key that will be matched to objects.
+- `value: T`: Value to update the collection with.
+- `rewrite?: boolean`: Overwrites the object when true.
 
 ## Method: `updateID`
+- `id: string`: ID of object to be updated.
+- `value: T`: Value to update the collection with.
+- `rewrite?: boolean`: Overwrites the object when true.
