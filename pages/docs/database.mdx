@@ -4,8 +4,41 @@ These are all `@pxe/database` module methods, events and declarations.
 ## Constructor: `Database`
 Create a database instance.
 
-## Method: `db.save`
-
 ## Method: `db.remove`
+- `collectionName: string`: The name of the collection to be removed
+
+Remove item from the database
 
 ## Method: `db.clear`
+Clear the database
+
+## Method: `db.collect`
+- `name: string`:
+- `validator: valids.Validator`:
+
+Create a new database collection
+
+# Collection
+All the methods of `db.collect`.
+
+## Method: `save`
+
+## Method: `del`
+
+## Method: `setValue`
+- `value: T`: Value to be set to the collection.
+
+## Method: `remove`
+- `id: string`: ID of object to be removed.
+
+## Method: `removeAll`
+- `o: any`: Key that will be matched to objects.
+- `count?: number`: Number of objects to be removed.
+
+## Method: `find`
+
+## Method: `findOne`
+
+## Method: `update`
+
+## Method: `updateID`
