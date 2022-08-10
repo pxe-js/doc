@@ -56,7 +56,7 @@ const pages: PagesMetadata = {
         title: "@pxe/database",
         description: "A simple JSON database for PXE.js",
         prev: "/docs/cors",
-        next: "docs/utils",
+        next: "/docs/utils",
         isMarkdown: true,
     },
     "docs/utils": {
