@@ -49,6 +49,13 @@ const pages: PagesMetadata = {
         title: "@pxe/cors",
         description: "PXE.js module to handle Cross-origin resource sharing",
         prev: "/docs/router",
+        next: "/docs/database",
+        isMarkdown: true,
+    },
+    "/docs/database": {
+        title: "@pxe/database",
+        description: "A simple JSON database for PXE.js",
+        prev: "/docs/cors",
         isMarkdown: true,
     }
 };
