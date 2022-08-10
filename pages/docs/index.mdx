@@ -29,7 +29,8 @@ All changes of `@pxe/server` starting from 1.0.12.
 
 #### 1.0.12-alpha.1
 - Fix icon bug.
-- If the response body is a `Buffer` object return the response body directly without parsing it to a `string`.
+- If the response body is a `Buffer` object return it directly without converting to `string`.
+- Change request body property to a get accessor. 
 
 <HLink content="Router" type="###" />
 All changes of `@pxe/router` starting from 1.0.2.
