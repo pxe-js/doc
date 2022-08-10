@@ -1,0 +1,17 @@
+# Utilities
+These are all the `@pxe/utils` exported utility functions.
+
+## Method: `utils.staticDir`
+- `dir?: string`: The target directory to serve. Defaults to `public`.
+
+Serve a directory.
+
+## Method: `utils.routes`
+- `dir: string`: The target route directory.
+
+Load all exports from the index file of the target directory and all of its child.
+
+## Method: `utils.routesSync`
+- `dir: string`: The target route directory.
+
+Works the same as `utils.routes` but the result is not a `Promise`.
