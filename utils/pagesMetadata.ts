@@ -59,7 +59,7 @@ const pages: PagesMetadata = {
         next: "/docs/utils",
         isMarkdown: true,
     },
-    "docs/utils": {
+    "/docs/utils": {
         title: "@pxe/utils",
         description: "Utilities for PXE.js",
         prev: "/docs/database",
