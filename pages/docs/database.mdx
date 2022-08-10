@@ -2,73 +2,89 @@
 These are all `@pxe/database` module methods, events and declarations.
 
 ## Constructor: `Database`
+- `path?: string`: The database path.
+
 Create a database instance.
 
 ## Method: `db.remove`
-- `collectionName: string`: The name of the collection to be removed
+- `collectionName: string`: The name of the collection to be removed.
 
-Remove item from the database
+Remove a collection from the database.
 
 ## Method: `db.clear`
-Clear the database
+Clear the database.
 
 ## Method: `db.collect`
-- `name: string`:
-- `validator: valids.Validator`:
+- `T`: The collection type.
+- `name: string`: The collection name.
+- `validator: valids.Validator`: The data validator.
 
-Create a new database collection
+Create a new database collection.
 
-# Collection
-All the methods of `db.collect`.
+### Collection
 
-## Method: `save`
+The class returns by `db.collect`.
+
+#### Constructor: `Collection`
+- `data: T`: The data.
+
+Create an object with the specified value if validate successfully.
+
+#### Method: `item.save`
 Save or resave the collection to the database.
 
-## Method: `del`
+#### Method: `item.del`
 Delete the collection from the database.
 
-## Method: `setValue`
+#### Method: `item.setValue`
 - `value: T`: Value to be set to the collection.
 
-Set value `T` to the collection and save to the database.
+Set the value to the collection and save to the database.
 
-## Method: `remove`
+#### Static Method: `Collection.remove`
 - `id: string`: ID of object to be removed.
 
 Delete object from collection by ID.
 
-## Method: `removeAll`
+#### Static Method: `Collection.removeAll`
 - `o: any`: Key that will be matched to objects.
 - `count?: number`: Number of objects to be removed.
 
 Delete all objects the match `o` in the collection. Delete `count` objects if specified.
 
-## Method: `select`
+#### Static Method: `Collection.select`
 - `id: string`: ID of object to be selected.
 
 Select a collection by ID.
 
-## Method: `find`
+#### Static Method: `Collection.find`
 - `o: any`: Key that will be matched to objects.
 - `count?: number`: Number of objects to be removed.
 
 Find a collection that matches `o`. Find `count` number of collections if specified.
 
-## Method: `findOne`
+#### Static Method: `Collection.findOne`
 - `o: any`: Key that will be matched to objects.
 
 Find a single colelction that matches `o`.
 
-## Method: `update`
+#### Static Method: `Collection.update`
 - `o: any`: Key that will be matched to objects.
 - `value: T`: Value to update the collection with.
 - `rewrite?: boolean`: Overwrites the object when true.
 
 Update the first collection that matches `o` with the new `value`.
 
-## Method: `updateID`
+#### Static Method: `Collection.updateID`
 - `id: string`: ID of object to be updated.
 - `value: T`: Value to update the collection with.
 - `rewrite?: boolean`: Overwrites the object when true.
 
+Update an item by its ID.
+
 Update a collection by ID with the new `value`.
+
+## Property: `db.path`
+- Type: `string`
+
+The specified database path. Can be `undefined`.
