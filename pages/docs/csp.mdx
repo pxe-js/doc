@@ -1,0 +1,55 @@
+# CSP
+Content security policy middleware for PXE.js.
+
+## Installation
+Install `@pxe/csp`.
+```bash
+# NPM
+npm i @pxe/csp
+
+# Yarn 
+yarn add @pxe/csp
+```
+
+## Declarations
+These are all `@pxe/csp` declarations.
+
+### Constructor: `CSP`
+- `options?: CSP.Options`: The CSP header options.
+
+Create a CSP middleware.
+
+### Method: `csp.invoke`
+- `ctx: Server.Context`: The server context
+- `next: Server.NextFunction`: Call the next middleware 
+- `...args: any[]`: The previous middleware passed arguments
+
+The callback of the middleware. This can be used as a middleware:
+```typescript
+app.use(csp.invoke.bind(csp));
+// Or shorter
+app.use(csp);
+```
+
+### Type: `FetchDirective`
+- `"child" | "connect" | "font" | "frame" | "img" | "manifest" | "media" | "object" | "prefetch" | "script" | "style" | "worker"`
+
+All basic fetch directives.
+
+### Type: `SrcValue`
+- `boolean | string | string[]`
+
+The value of any key in `options.src`.
+
+### Interface: `Options`
+The CSP options.
+
+#### Property: `options.report`
+- Type: `string`
+
+The report URI.
+
+#### Property: `options.src`
+- Type: `{ [key in FetchDirective]?: SrcValue } & { [key: string]: SrcValue }`
+
+This object contains all fetch directives.
