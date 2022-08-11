@@ -1,10 +1,23 @@
 # Server
+The server module for PXE.js.
+
+## Installation
+Install `@pxe/server`.
+```bash
+# NPM
+npm i @pxe/server
+
+# Yarn
+yarn add @pxe/server
+```
+
+## Declarations
 These are all `@pxe/server` module methods, events and declarations.
 
-## Constructor: `Server`
+### Constructor: `Server`
 Create a server instance.
 
-## Method: `app.cb`
+### Method: `app.cb`
 - `req: http.IncomingMessage`: The request 
 - `res: http.ServerResponse`: The response
 
@@ -15,19 +28,19 @@ const server = http.createServer(app.cb.bind(app));
 const server = http.createServer(app);
 ```
 
-## Method: `app.use`
+### Method: `app.use`
 - `...m: Middleware[]`: The middleware
 
 Add a middleware to the middleware list.
 You can add multiple middleware within a single call.
 
-## Method: `app.on`
+### Method: `app.on`
 - `event: string`: The event name
 - `handler: (...args: any[]) => Promise<void> | void`: The event listener
 
 Add an listener of an event.
 
-## Method: `app.emit`
+### Method: `app.emit`
 - `event: string`: The event name
 - `...args: any[]`: The parameter to apply to the function call
 - Returns: `Promise<void> | void | boolean`
@@ -35,7 +48,7 @@ Add an listener of an event.
 Trigger the listener of an event.
 If the event listener does not exist return `false`.
 
-## Method: `app.ls`
+### Method: `app.ls`
 - `port?: number`: The target port
 - `hostname?: string`: The target hostname
 - `backlog?: number`: The backlog
@@ -50,128 +63,128 @@ const server = http.createServer(app);
 server.listen(port, host, backlog, listeningListener);
 ```
 
-## Method: `app.icon`
+### Method: `app.icon`
 - `path: string`: The icon path
 
 Set the icon of the app. 
 On each request with request URL equals `/favicon.ico` the icon is returned.
 
-## Method: `app.set`
+### Method: `app.set`
 - Type parameters: `T`
 - `key: string`: The key
 - `value: T`: The value
 
 Save the key value pair to the app storage.
 
-## Method: `app.get`
+### Method: `app.get`
 - `key: string`: The key
 
 Get the key value from the app storage.
 
-## Event: `error`
+### Event: `error`
 - `err: any`: The error
 - `ctx: Context`: The context object of the current request
 
 Trigger when an error occurred while running the middlewares.
 
-## Event: `beforeFinish`
+### Event: `beforeFinish`
 - `ctx: Context`: The context object of the current request
 
 Trigger after running all the middlewares.
 
-## Type: `RequestMethod`
+### Type: `RequestMethod`
 - `"GET" | "POST" | "PUT" | "DELETE" | "HEAD" | "OPTIONS" | "PATCH" | "CONNECT" | "TRACE"`
 
 All the request method.
 
-## Type: `MIMEType`
+### Type: `MIMEType`
 - `"audio/aac" | "application/x-abiword" | "application/x-freearc" | "image/avif" | "video/x-msvideo" | "application/vnd.amazon.ebook" | "application/octet-stream" | "image/bmp" | "application/x-bzip" | "application/x-bzip2" | "application/x-csh" | "application/x-cdf" | "text/css" | "text/csv" | "application/msword" | "application/vnd.ms-fontobject" | "application/gzip" | "application/vnd.openxmlformats-officedocument.wordprocessingml.document" | "application/epub+zip" | "image/gif" | "text/html" | "image/vnd.microsoft.icon" | "text/calendar" | "application/java-archive" | "image/jpeg" | "text/javascript" | "application/json" | "application/ld+json" | "audio/midi" | "audio/x-midi" | "audio/mpeg" | "video/mp4" | "application/vnd.apple.installer+xml" | "application/vnd.oasis.opendocument.presentation" | "application/vnd.oasis.opendocument.spreadsheet" | "application/vnd.oasis.opendocument.text" | "audio/ogg" | "video/ogg" | "application/ogg" | "audio/opus" | "font/otf" | "image/png" | "application/pdf" | "image/svg+xml" | "application/x-httpd-php" | "application/vnd.ms-powerpoint" | "application/vnd.rar" | "application/rtf" | "application/vnd.openxmlformats-officedocument.presentationml.presentation" | "application/x-sh" | "application/x-shockwave-flash" | "application/x-tar" | "image/tiff" | "font/ttf" | "video/mp2t" | "text/plain" | "application/vnd.visio" | "audio/wav" | "audio/webm" | "image/webp" | "font/woff" | "font/woff2" | "application/xhtml+xml" | "application/vnd.ms-excel" | "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" | "application/xml" | "text/xml" | "application/atom+xml" | "application/vnd.mozilla.xul+xml" | "application/zip" | "video/3gpp" | "audio/3gpp" | "video/3gpp2" | "audio/3gpp2" | "application/x-7z-compressed" | "application/x-www-form-urlencoded"`
 
 All the common MIME types.
 
-## Interface: `Middleware`
+### Interface: `Middleware`
 - `ctx: Context`: The current request context
 - `next: NextFunction`: The function that calls the next middleware
 - `...args: any[]`: The arguments passed by the previous middleware 
 
 The middleware type.
 
-## Interface: `NextFunction`
+### Interface: `NextFunction`
 - `..args: any[]`: The arguments to pass to the next middleware
 
 The next function type.
 
-## Interface: `Context`
+### Interface: `Context`
 All the properties of a context object.
 
-### Request
+#### Request
 All the properties of `ctx.request`.
 
-#### Property: `request.raw`
+##### Property: `request.raw`
 - Type: `http.IncomingMessage`
 
 The raw HTTP request object.
 This property is read-only.
 
-#### Property: `request.method`
+##### Property: `request.method`
 - Type: `Server.RequestMethod`
 
 The request method.
 This property is read-only.
 
-#### Property: `request.url`
+##### Property: `request.url`
 - Type: `string`
 
 This property is read-only.
 The request URL.
 
-#### Property: `request.headers`
+##### Property: `request.headers`
 - Type: `http.IncomingHttpHeaders`
 
 This property is read-only.
 Parsed request headers.
 
-#### Method: `request.getBody`
+##### Method: `request.getBody`
 - Returns: `Promise<any>`
 
 Get the request body.
 
-#### Property: `request.query`
+##### Property: `request.query`
 - Type: `Record<string, string>`
 
 This property is read-only.
 The parsed request query.
 
-### Response
+#### Response
 All the properties and methods of `ctx.response`.
 
-#### Property: `response.raw`
+##### Property: `response.raw`
 - Type: `http.ServerResponse`
 
 The raw HTTP response object.
 This property is read-only.
 
-#### Property: `response.body`
+##### Property: `response.body`
 - Type: `any`
 
 The response body. 
 Modify this to modify the response.
 If `response.body`, `response.status.code` and `response.status.message` are not set a 404 error is returned to the client.
 
-#### Property: `response.type`
+##### Property: `response.type`
 - Type: `Server.MIMEType`
 
 The content type of the response.
 If this property is not set the content type is chosen base on the response.
 
-#### Property: `response.status`
+##### Property: `response.status`
 - Properties:
     + `code?: number`: The status code.
     + `message?: string`: The status message.
 
 Set the status code and status message. This property is read-only.
 
-#### Property: `response.headers`
+##### Property: `response.headers`
 - Type: `Record<string, string | readonly string[] | number>`
 
 Set the response headers. This property is read-only.
@@ -180,47 +193,47 @@ You cannot directly set the headers using `response.headers = ...`.
 
 Instead use `Object.assign(response.headers, ...)`.
 
-#### Method: `response.redirect`
+##### Method: `response.redirect`
 - `url: string`: The target URL
 - `permanent?: boolean`: Whether this redirect is a permanent redirect or not
 
 Redirect to different URL.
 
-### Cookie
+#### Cookie
 All the properties and methods of `ctx.cookie`.
 
-#### Property: `cookie.options`
+##### Property: `cookie.options`
 - Type: `Server.CookieOptions`
 
 The cookie options.
 
-#### Property: `cookie.value`
+##### Property: `cookie.value`
 - Type: `string`
 
 The cookie value in `string`. Modify this property to modify the cookie value.
 
-#### Method: `cookie.remove`
+##### Method: `cookie.remove`
 Remove the cookie. After this call `cookie.value` cannot be used to set cookie value and `cookie.removed` is set to `true`.
 
-#### Property: `cookie.removed`
+##### Property: `cookie.removed`
 - Type: `boolean`
 
 Check whether the request cookie is removed.
 
-#### Property: `cookie.iv`
+##### Property: `cookie.iv`
 - Type: `Buffer`
 
 The cookie initialization vector.
 
-#### Property: `cookie.key`
+##### Property: `cookie.key`
 - Type: `string`
 
 The cookie generated secret key.
 
-### Request options
+#### Request options
 All the properties of `ctx.options`.
 
-#### Property: `options.finishResponse`
+##### Property: `options.finishResponse`
 - Type: `boolean | ((ctx: Context) => Promise<void> | void)`
 
 Specify the way the response is finished. The default value is `true`.
@@ -231,7 +244,7 @@ If set to a function, the response is finished by calling that function.
 
 If set to `false`, the response is not finished.
 
-#### Property: `options.useDefaultCookie`
+##### Property: `options.useDefaultCookie`
 - Type: `boolean`
 
 Whether to set cookie or not. The default value is `false`.

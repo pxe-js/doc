@@ -1,12 +1,25 @@
 # CORS 
-All method to handle Cross-origin resource sharing.
+The CORS middleware for PXE.js.
 
-## Contructor: `CORS`
+## Installation
+Install `@pxe/cors`.
+```bash
+# NPM
+npm i @pxe/cors
+
+# Yarn
+yarn add @pxe/cors
+```
+
+## Declarations
+All stuff to handle Cross-origin resource sharing.
+
+### Contructor: `CORS`
 - `options?: CORS.Options`: The options
 
 Construct a CORS middleware.
 
-## Method: `cors.invoke`
+### Method: `cors.invoke`
 - `ctx: Server.Context`: The server context
 - `next: Server.NextFunction`: Call the next middleware 
 - `...args: any[]`: The previous middleware passed arguments
@@ -18,35 +31,35 @@ app.use(cors.invoke.bind(cors));
 app.use(cors);
 ```
 
-## CORS Options
+### CORS Options
 All CORS middleware options.
 
-### Property: `options.allowOrigins`
+#### Property: `options.allowOrigins`
 - Type: `string | string[]`
 
 Allows the specified origins to make request to the server. By default all origins are allowed.
 
-### Property: `options.allowMethods`
+#### Property: `options.allowMethods`
 - Type: `string | Server.RequestMethod[]`
 
 Allow clients to request to the server with specified request method. By default all methods are allowed.
 
-### Property: `options.exposeHeaders`
+#### Property: `options.exposeHeaders`
 - Type: `string | string[]`
 
 Expose specified headers to the client. `Cache-Control`, `Content-Length`, `Content-Language`, `Content-Type`, `Expires`, `Last-Modified`, `Pragma` are headers that is exposed by default.
 
-### Property: `options.maxAge`
+#### Property: `options.maxAge`
 - Type: `number`
 
 Maximum number of seconds the results can be cached, as an unsigned non-negative integer. The default value is `5`.
 
-### Property: `options.allowCredentials`
+#### Property: `options.allowCredentials`
 - Type: `boolean`
 
 Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials.
 
-### Property: `options.allowHeaders`
+#### Property: `options.allowHeaders`
 - Type: `string | string[]`
 
 Indicate which HTTP headers can be used when making the actual request. This field is optional.
