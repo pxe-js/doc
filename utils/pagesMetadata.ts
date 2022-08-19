@@ -66,6 +66,13 @@ const pages: PagesMetadata = {
         next: "/docs/csp",
         isMarkdown: true
     },
+    "/docs/session": {
+        title: "@pxe/session",
+        description: "Session for PXE.js",
+        prev: "/docs/utils",
+        next: "/docs/csp",
+        isMarkdown: true
+    },
     "/docs/csp": {
         title: "@pxe/csp",
         description: "Content security policy middleware for PXE.js",
