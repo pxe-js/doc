@@ -1,1 +1,35 @@
 # Session
+
+## Constructor: `Session`
+Create a session store.
+
+## Method: `session.invoke`
+- `ctx: Context`:
+- `next: NextFunction`: 
+- `...args: any[]`:
+
+Invoke a new session
+
+## Method: `sessionStore.save`
+- `data: any`: Data to be stored
+- `id: string`: The id
+
+Save data and id to sessionStore matching id.
+
+## Method: `sessionStore.get`
+- `id: string`: The id
+
+Get the sessionStore.
+
+## Method: `sessionStore.destroy`
+- `id: string`: The id
+
+Destroy the sessionStore.
+
+## Interface: `Context`
+All the properties of a context object.
+
+#### Property: ``
+
+
+
