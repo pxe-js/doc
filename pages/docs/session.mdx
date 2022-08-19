@@ -1,7 +1,18 @@
 # Session
+The session module for PXE.js
+
+## Installation
+Install `@pxe/session`.
+```bash
+# NPM
+npm i @pxe/session vlds
+
+# Yarn
+yarn add @pxe/session vlds
+```
 
 ## Constructor: `Session`
-Create a session store.
+Create a session instance.
 
 ## Method: `session.invoke`
 - `ctx: Context`:
@@ -9,6 +20,10 @@ Create a session store.
 - `...args: any[]`:
 
 Invoke a new session
+
+## Constructor: `Store`
+
+Create a new session store.
 
 ## Method: `sessionStore.save`
 - `data: any`: Data to be stored
