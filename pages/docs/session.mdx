@@ -19,32 +19,34 @@ Create a session instance.
 - `next: NextFunction`: 
 - `...args: any[]`:
 
-Invoke a new session
+The callback of the session middleware. This can be used as a middleware:
+```typescript
+app.use(session.invoke.bind(router));
+// Or shorter
+app.use(session);
+```
 
-## Constructor: `Session.Store`
+## Session Store
+Store the sessions. The default session store can cause memory leaks.
+
+### Constructor: `Store`
 
 Create a new session store.
 
-## Method: `sessionStore.save`
+### Method: `sessionStore.save`
 - `data: any`: Data to be stored
 - `id: string`: The id
 
 Save data and id to sessionStore matching id.
 
-## Method: `sessionStore.get`
+### Method: `sessionStore.get`
 - `id: string`: The id
 
 Get the sessionStore.
 
-## Method: `sessionStore.destroy`
+### Method: `sessionStore.destroy`
 - `id: string`: The id
 
 Destroy the sessionStore.
-
-## Interface: `Context`
-All the properties of a context object.
-
-#### Property: ``
-
 
 

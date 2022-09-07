@@ -32,6 +32,11 @@ All changes of `@pxe/server` starting from 1.0.12.
 - If the response body is a `Buffer` object return it directly without converting to `string`.
 - Change request body property to a get accessor. 
 
+#### 1.1.0-alpha.1
+- Remove `ctx.options` property.
+- Change `disable cookie` option to `use cookie`.
+- Change `beforeFinish` event to `finish`.
+
 <HLink content="Router" type="###" />
 All changes of `@pxe/router` starting from 1.0.2.
 
@@ -53,8 +58,3 @@ All changes of `@pxe/cors` starting from 1.0.0.
 #### 1.0.0-alpha.1
 - Create CSP middleware
 - Move all options parsing to constructor
-
-#### 1.1.0
-- Remove ctx.options
-- Change 'disable cookie' to 'use cookie' 
-- Change 'beforeFinish' event to 'finish'
