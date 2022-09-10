@@ -87,10 +87,10 @@ Get the key value from the app storage.
 
 Trigger when an error occurred while running the middlewares.
 
-### Event: `beforeFinish`
+### Event: `finish`
 - `ctx: Context`: The context object of the current request
 
-Trigger after running all the middlewares.
+Trigger after running all the middlewares. the default event handler is the `finishResponse` method in `finishResponse.ts`.
 
 ### Type: `RequestMethod`
 - `"GET" | "POST" | "PUT" | "DELETE" | "HEAD" | "OPTIONS" | "PATCH" | "CONNECT" | "TRACE"`
@@ -144,8 +144,8 @@ The request URL.
 This property is read-only.
 Parsed request headers.
 
-##### Method: `request.getBody`
-- Returns: `Promise<any>`
+##### Property: `request.body`
+- Type: `Promise<any>`
 
 Get the request body.
 
@@ -229,26 +229,3 @@ The cookie initialization vector.
 - Type: `string`
 
 The cookie generated secret key.
-
-#### Request options
-All the properties of `ctx.options`.
-
-##### Property: `options.finishResponse`
-- Type: `boolean | ((ctx: Context) => Promise<void> | void)`
-
-Specify the way the response is finished. The default value is `true`.
-
-If set to `true`, the response is finished using the default callback.
-
-If set to a function, the response is finished by calling that function.
-
-If set to `false`, the response is not finished.
-
-##### Property: `options.useDefaultCookie`
-- Type: `boolean`
-
-Whether to set cookie or not. The default value is `false`.
-
-If set to `false`, the cookie is not modified.
-
-If set to `true`, the cookie will be modified based on the cookie value of `ctx.cookie`.
